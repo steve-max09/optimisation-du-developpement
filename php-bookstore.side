@@ -1,0 +1,141 @@
+{
+  "id": "7406e8b9-db19-4451-9b80-372420231db7",
+  "version": "2.0",
+  "name": "php-bookstore",
+  "url": "http://localhost:8086",
+  "tests": [{
+    "id": "43210643-f31f-4783-a9da-f442c1f11c89",
+    "name": "navigation",
+    "commands": [{
+      "id": "966d3fd4-7ed3-4bfe-9ac0-0a851c3b07f3",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2547ec22-df90-463b-8bc5-3a84c0fc3b1f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1920x1168",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "579eef59-ca11-4cea-9406-594563894621",
+      "comment": "",
+      "command": "click",
+      "target": "css=.hf:nth-child(3) > .hi",
+      "targets": [
+        ["css=.hf:nth-child(3) > .hi", "css:finder"],
+        ["xpath=(//input[@name='submitButton'])[2]", "xpath:attributes"],
+        ["xpath=//form[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "079bf91a-f6dd-404a-b1bf-2c11f783f034",
+      "comment": "",
+      "command": "click",
+      "target": "name=cancel",
+      "targets": [
+        ["name=cancel", "name"],
+        ["css=.button:nth-child(10)", "css:finder"],
+        ["xpath=//input[@name='cancel']", "xpath:attributes"],
+        ["xpath=//input[4]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e30808b-279a-44e9-87cd-197614528c56",
+      "comment": "",
+      "command": "click",
+      "target": "name=submitButton",
+      "targets": [
+        ["name=submitButton", "name"],
+        ["css=.hf:nth-child(2) > .hi", "css:finder"],
+        ["xpath=//input[@name='submitButton']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bae66fcf-0e2d-4942-b631-44fe8ae9883f",
+      "comment": "",
+      "command": "click",
+      "target": "name=cancel",
+      "targets": [
+        ["name=cancel", "name"],
+        ["css=.button:nth-child(46)", "css:finder"],
+        ["xpath=//input[@name='cancel']", "xpath:attributes"],
+        ["xpath=//input[10]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "28e8abff-6a50-4cc1-9f16-14e3efff9e62",
+      "comment": "",
+      "command": "click",
+      "target": "css=td:nth-child(2) .button",
+      "targets": [
+        ["css=td:nth-child(2) .button", "css:finder"],
+        ["xpath=(//input[@value='Add to Cart'])[2]", "xpath:attributes"],
+        ["xpath=//table[@id='myTable']/tbody/tr/td[2]/table/tbody/tr[7]/td/form/input[3]", "xpath:idRelative"],
+        ["xpath=//td[2]/table/tbody/tr[7]/td/form/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2d00827-f9fe-4b89-970a-5b0faea97c7f",
+      "comment": "",
+      "command": "type",
+      "target": "css=td:nth-child(3) input:nth-child(1)",
+      "targets": [
+        ["css=td:nth-child(3) input:nth-child(1)", "css:finder"],
+        ["xpath=(//input[@name='quantity'])[3]", "xpath:attributes"],
+        ["xpath=//table[@id='myTable']/tbody/tr/td[3]/table/tbody/tr[7]/td/form/input", "xpath:idRelative"],
+        ["xpath=//td[3]/table/tbody/tr[7]/td/form/input", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "e63136c3-51de-4739-95a2-754a4c6f648d",
+      "comment": "",
+      "command": "click",
+      "target": "css=td:nth-child(3) input:nth-child(1)",
+      "targets": [
+        ["css=td:nth-child(3) input:nth-child(1)", "css:finder"],
+        ["xpath=(//input[@name='quantity'])[3]", "xpath:attributes"],
+        ["xpath=//table[@id='myTable']/tbody/tr/td[3]/table/tbody/tr[7]/td/form/input", "xpath:idRelative"],
+        ["xpath=//td[3]/table/tbody/tr[7]/td/form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "db25c7b4-47a2-4905-b85e-01da36b6f5da",
+      "comment": "",
+      "command": "click",
+      "target": "css=td:nth-child(3) .button",
+      "targets": [
+        ["css=td:nth-child(3) .button", "css:finder"],
+        ["xpath=(//input[@value='Add to Cart'])[3]", "xpath:attributes"],
+        ["xpath=//table[@id='myTable']/tbody/tr/td[3]/table/tbody/tr[7]/td/form/input[3]", "xpath:idRelative"],
+        ["xpath=//td[3]/table/tbody/tr[7]/td/form/input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6442460f-a2be-4598-87f1-4df2017668f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.cbtn",
+      "targets": [
+        ["css=.cbtn", "css:finder"],
+        ["xpath=//input[@value='Empty Cart']", "xpath:attributes"],
+        ["xpath=//th/form/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2089289d-a8bc-4ff8-9ed0-73962a3fa5c0",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["43210643-f31f-4783-a9da-f442c1f11c89"]
+  }],
+  "urls": ["http://localhost:8086/"],
+  "plugins": []
+}

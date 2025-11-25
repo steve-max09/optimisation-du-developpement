@@ -1,0 +1,32 @@
+---
+services:
+  app:
+    env_file:
+      - .env
+    build: ./docker/php
+    ports:
+      - 8086:80
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www/html
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_USER=${APP_DATABASE_USER}
+      - MYSQL_PASSWORD=${APP_DATABASE_PASSWORD}
+      - MYSQL_DATABASE=${APP_DATABASE_NAME}
+      - MYSQL_ROOT_PASSWORD=${APP_DATABASE_ROOT_PASSWORD}
+    volumes:
+      - ./docker/mysql/rootfs/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - db-data:/var/lib/mysql:rw
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+volumes:
+  db-data: null
