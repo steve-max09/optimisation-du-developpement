@@ -4,6 +4,12 @@ $nameErr = $emailErr = $genderErr = $addressErr = $icErr = $contactErr = $userna
 $name = $email = $gender = $address = $ic = $contact = $uname = $upassword = "";
 $cID;
 
+$conn = require_once 'connection.php';
+
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+} 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (empty($_POST["name"])) {
 		$nameErr = "Please enter your name";
@@ -64,14 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 													$address = "";
 												}else{
 													$address = $_POST['address'];
-
-													$conn = require_once 'connection.php';
-
-													if ($conn->connect_error) {
-													    die("Connection failed: " . $conn->connect_error);
-													} 
-
-
 
 													$sql = "INSERT INTO users(UserName, Password) VALUES('".$uname."', '".$upassword."')";
 													$conn->query($sql);

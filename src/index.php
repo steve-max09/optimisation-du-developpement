@@ -1,22 +1,13 @@
 <?php
 session_start();
 
+$conn = require_once 'connection.php';
+
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+} 
+
 	if(isset($_POST['ac'])){
-		$servername = getenv("APP_DATABASE_HOST");
-		$username = getenv("APP_DATABASE_USER");
-		$password = getenv("APP_DATABASE_PASSWORD");
-	$database = getenv("APP_DATABASE_NAME");
-
-		$conn = require_once 'connection.php';
-
-
-		if ($conn->connect_error) {
-		    die("Connection failed: " . $conn->connect_error);
-		} 
-
-	
-
-
 		$sql = "SELECT * FROM book WHERE BookID = '".$_POST['ac']."'";
 		$result = $conn->query($sql);
 
@@ -31,27 +22,9 @@ session_start();
 	}
 
 	if(isset($_POST['delc'])){
-		$conn = require_once 'connection.php';
-
-		if ($conn->connect_error) {
-		    die("Connection failed: " . $conn->connect_error);
-		} 
-
 		$sql = "DELETE FROM cart";
         $result = $conn->query($sql);
 	}
-
-	$servername = getenv("APP_DATABASE_HOST");
-	$username = getenv("APP_DATABASE_USER");
-	$password = getenv("APP_DATABASE_PASSWORD");
-	$database = getenv("APP_DATABASE_NAME");
-
-	$conn = require_once 'connection.php';
-
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	}
-
 
 	$sql = "SELECT * FROM book";
 	$result = $conn->query($sql);

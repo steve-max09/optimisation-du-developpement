@@ -9,14 +9,13 @@
 <?php
 session_start();
 
+$conn = require_once 'connection.php'; 
+
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+} 
+
 if(isset($_SESSION['id'])){
-	$conn = require_once 'connection.php'; 
-
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 
-
-
 	$conn->query($sql);
 
 	$sql = "SELECT CustomerID from customer WHERE UserID = ".$_SESSION['id']."";
@@ -135,15 +134,6 @@ if(isset($_POST['submitButton'])){
 											$username = getenv("APP_DATABASE_USER");
 											$password = getenv("APP_DATABASE_PASSWORD");
 	$database = getenv("APP_DATABASE_NAME");
-
-											$conn = require_once 'connection.php';
-
-											if ($conn->connect_error) {
-											    die("Connection failed: " . $conn->connect_error);
-											} 
-
-										
-									
 
 											$sql = "INSERT INTO customer(CustomerName, CustomerPhone, CustomerIC, CustomerEmail, CustomerAddress, CustomerGender) 
 											VALUES('".$name."', '".$contact."', '".$ic."', '".$email."', '".$address."', '".$gender."')";
@@ -302,13 +292,6 @@ if(!isset($_SESSION['id'])){
 }
 
 if(isset($_POST['submitButton'])){
-	$conn = require_once 'connection.php';
-
-	if ($conn->connect_error) {
-	    die("Connection failed: " . $conn->connect_error);
-	} 
-
-
 	$conn->query($sql);
 
 	$sql = "SELECT customer.CustomerName, customer.CustomerIC, customer.CustomerGender, customer.CustomerAddress, customer.CustomerEmail, customer.CustomerPhone, book.BookTitle, book.Price, book.Image, `order`.`DatePurchase`, `order`.`Quantity`, `order`.`TotalPrice`

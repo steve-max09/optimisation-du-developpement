@@ -97,15 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 												}else{
 													$address = $_POST['address'];
 
-													$conn = require_once 'connection.php';
-
-													if ($conn->connect_error) {
-													    die("Connection failed: " . $conn->connect_error);
-													} 
-
-												
-											
-
 													$sql = "UPDATE users SET UserName = '".$uname."', Password = '".$upassword."' WHERE UserID = "
 													.$_SESSION['id']."";
 													$conn->query($sql);
