@@ -12,13 +12,6 @@ $oEmail;
 $oPhone;
 $oAddress;
 
-<<<<<<< Updated upstream
-$servername = getenv("APP_DATABASE_HOST");
-$username = getenv("APP_DATABASE_USER");
-$password = getenv("APP_DATABASE_PASSWORD");
-
-=======
->>>>>>> Stashed changes
 $conn = require_once 'connection.php';
 
 if ($conn->connect_error) {
@@ -104,14 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 												}else{
 													$address = $_POST['address'];
 
-<<<<<<< Updated upstream
-													$servername = getenv("APP_DATABASE_HOST");
-													$username = getenv("APP_DATABASE_USER");
-													$password = getenv("APP_DATABASE_PASSWORD");
-	$database = getenv("APP_DATABASE_NAME");
-
-=======
->>>>>>> Stashed changes
 													$conn = require_once 'connection.php';
 
 													if ($conn->connect_error) {
