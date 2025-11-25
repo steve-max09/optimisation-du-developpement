@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./src:/var/www/html
+      - .:/var/www/html
   db:
     image: mysql:5.7
     environment:
