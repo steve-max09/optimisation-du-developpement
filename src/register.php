@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+$conn = require_once 'connection.php';
+
 $nameErr = $emailErr = $genderErr = $addressErr = $icErr = $contactErr = $usernameErr = $passwordErr = "";
 $name = $email = $gender = $address = $ic = $contact = $uname = $upassword = "";
 $cID;
@@ -64,19 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 													$address = "";
 												}else{
 													$address = $_POST['address'];
-
-													$servername = getenv("APP_DATABASE_HOST");
-													$username = getenv("APP_DATABASE_USER");
-													$password = getenv("APP_DATABASE_PASSWORD");
-	                                                $database = getenv("APP_DATABASE_NAME");
-
-													$conn = new mysqli($servername, $username, $password, $database); 
-
-													if ($conn->connect_error) {
-													    die("Connection failed: " . $conn->connect_error);
-													} 
-
-
 
 													$sql = "INSERT INTO users(UserName, Password) VALUES('".$uname."', '".$upassword."')";
 													$conn->query($sql);

@@ -12,18 +12,7 @@ $oEmail;
 $oPhone;
 $oAddress;
 
-$servername = getenv("APP_DATABASE_HOST");
-$username = getenv("APP_DATABASE_USER");
-$password = getenv("APP_DATABASE_PASSWORD");
-
-$conn = new mysqli($servername, $username, $password); 
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-$sql = "USE bookstore";
-$conn->query($sql);
+$conn = require_once 'connection.php';
 
 $sql = "SELECT users.UserName, users.Password, customer.CustomerName, customer.CustomerIC, customer.CustomerEmail, customer.CustomerPhone, customer.CustomerGender, customer.CustomerAddress
 	FROM users, customer
@@ -100,20 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 													$address = "";
 												}else{
 													$address = $_POST['address'];
-
-													$servername = getenv("APP_DATABASE_HOST");
-													$username = getenv("APP_DATABASE_USER");
-													$password = getenv("APP_DATABASE_PASSWORD");
-	$database = getenv("APP_DATABASE_NAME");
-
-													$conn = new mysqli($servername, $username, $password, $database); 
-
-													if ($conn->connect_error) {
-													    die("Connection failed: " . $conn->connect_error);
-													} 
-
-												
-											
 
 													$sql = "UPDATE users SET UserName = '".$uname."', Password = '".$upassword."' WHERE UserID = "
 													.$_SESSION['id']."";
