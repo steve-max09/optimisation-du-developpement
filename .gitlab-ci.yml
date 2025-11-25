@@ -4,12 +4,18 @@ default:
 
 stages:
   - quality
+  - cs-fixer
   - build
 
-phpstan:
+quality:
   stage: quality
   script:
-    - echo "phpstan"
+    - echo “phpstan”
+
+cs-fixer:
+  stage: cs-fixer
+  script:
+    - echo "php-cs-fixer"
 
 build:
   stage: build
