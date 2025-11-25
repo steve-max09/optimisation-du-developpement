@@ -9,6 +9,7 @@ stages:
 phpstan:
   stage: quality
   script:
+    - echo “php-cs-fixer”
     - echo "phpstan"
 
 build:
