@@ -10,16 +10,7 @@
 session_start();
 
 if(isset($_SESSION['id'])){
-<<<<<<< Updated upstream
-	$servername = getenv("APP_DATABASE_HOST");
-	$username = getenv("APP_DATABASE_USER");
-	$password = getenv("APP_DATABASE_PASSWORD");
-	$database = getenv("APP_DATABASE_NAME");
-
-	$conn = require_once 'connection.php';
-=======
 	$conn = require_once 'connection.php'; 
->>>>>>> Stashed changes
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
@@ -311,14 +302,6 @@ if(!isset($_SESSION['id'])){
 }
 
 if(isset($_POST['submitButton'])){
-<<<<<<< Updated upstream
-	$servername = getenv("APP_DATABASE_HOST");
-	$username = getenv("APP_DATABASE_USER");
-	$password = getenv("APP_DATABASE_PASSWORD");
-	$database = getenv("APP_DATABASE_NAME");
-
-=======
->>>>>>> Stashed changes
 	$conn = require_once 'connection.php';
 
 	if ($conn->connect_error) {
