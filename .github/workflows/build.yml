@@ -1,13 +1,8 @@
+---
 name: Main CI workflow
 on:
-  push:
+  push: null
 jobs:
-  quality:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Quality step
-        run: echo "phpstan"
-
   build:
     runs-on: ubuntu-latest
     steps:

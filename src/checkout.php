@@ -10,17 +10,18 @@
 session_start();
 
 if(isset($_SESSION['id'])){
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
+	$servername = getenv("APP_DATABASE_HOST");
+	$username = getenv("APP_DATABASE_USER");
+	$password = getenv("APP_DATABASE_PASSWORD");
+	$database = getenv("APP_DATABASE_NAME");
 
-	$conn = new mysqli($servername, $username, $password); 
+	$conn = new mysqli($servername, $username, $password, $database); 
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "USE bookstore";
+
 	$conn->query($sql);
 
 	$sql = "SELECT CustomerID from customer WHERE UserID = ".$_SESSION['id']."";
@@ -38,7 +39,7 @@ if(isset($_SESSION['id'])){
 		$sql = "INSERT INTO `order`(CustomerID, BookID, DatePurchase, Quantity, TotalPrice, Status) 
 		VALUES(".$row['CustomerID'].", '".$row['BookID']
 		."', CURRENT_TIME, ".$row['Quantity'].", ".$row['TotalPrice'].", 'N')";
-		$conn->query($sql);
+
 	}
 	$sql = "DELETE FROM cart";
 	$conn->query($sql);
@@ -135,22 +136,23 @@ if(isset($_POST['submitButton'])){
 										}else{
 											$address = $_POST['address'];
 
-											$servername = "localhost";
-											$username = "root";
-											$password = "";
+											$servername = getenv("APP_DATABASE_HOST");
+											$username = getenv("APP_DATABASE_USER");
+											$password = getenv("APP_DATABASE_PASSWORD");
+	$database = getenv("APP_DATABASE_NAME");
 
-											$conn = new mysqli($servername, $username, $password); 
+											$conn = new mysqli($servername, $username, $password, $database); 
 
 											if ($conn->connect_error) {
 											    die("Connection failed: " . $conn->connect_error);
 											} 
 
-											$sql = "USE bookstore";
-											$conn->query($sql);
+										
+									
 
 											$sql = "INSERT INTO customer(CustomerName, CustomerPhone, CustomerIC, CustomerEmail, CustomerAddress, CustomerGender) 
 											VALUES('".$name."', '".$contact."', '".$ic."', '".$email."', '".$address."', '".$gender."')";
-											$conn->query($sql);
+									
  
 											$sql = "SELECT CustomerID from customer WHERE CustomerName = '".$name."' AND CustomerIC = '".$ic."'";
 											$result = $conn->query($sql);
@@ -159,7 +161,7 @@ if(isset($_POST['submitButton'])){
 											}
 
 											$sql = "UPDATE cart SET CustomerID = ".$cID." WHERE 1";
-											$conn->query($sql);
+									
 
 											$sql = "SELECT * FROM cart";
 											$result = $conn->query($sql);
@@ -167,10 +169,10 @@ if(isset($_POST['submitButton'])){
 												$sql = "INSERT INTO `order`(CustomerID, BookID, DatePurchase, Quantity, TotalPrice, Status) 
 												VALUES(".$row['CustomerID'].", '".$row['BookID']
 												."', CURRENT_TIME, ".$row['Quantity'].", ".$row['TotalPrice'].", 'N')";
-												$conn->query($sql);
+										
 											}
 											$sql = "DELETE FROM cart";
-											$conn->query($sql);
+									
 										}
 									}
 								}
@@ -305,17 +307,18 @@ if(!isset($_SESSION['id'])){
 }
 
 if(isset($_POST['submitButton'])){
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
+	$servername = getenv("APP_DATABASE_HOST");
+	$username = getenv("APP_DATABASE_USER");
+	$password = getenv("APP_DATABASE_PASSWORD");
+	$database = getenv("APP_DATABASE_NAME");
 
-	$conn = new mysqli($servername, $username, $password); 
+	$conn = new mysqli($servername, $username, $password, $database); 
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "USE bookstore";
+
 	$conn->query($sql);
 
 	$sql = "SELECT customer.CustomerName, customer.CustomerIC, customer.CustomerGender, customer.CustomerAddress, customer.CustomerEmail, customer.CustomerPhone, book.BookTitle, book.Price, book.Image, `order`.`DatePurchase`, `order`.`Quantity`, `order`.`TotalPrice`

@@ -1,23 +1,20 @@
-<html>
-<meta http-equiv="Content-Type"'.' content="text/html; charset=utf8"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="style.css">
-<body>
 <?php
 session_start();
-	if(isset($_POST['ac'])){
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
 
-		$conn = new mysqli($servername, $username, $password);
+	if(isset($_POST['ac'])){
+		$servername = getenv("APP_DATABASE_HOST");
+		$username = getenv("APP_DATABASE_USER");
+		$password = getenv("APP_DATABASE_PASSWORD");
+	$database = getenv("APP_DATABASE_NAME");
+
+		$conn = new mysqli($servername, $username, $password, $database);
 
 		if ($conn->connect_error) {
 		    die("Connection failed: " . $conn->connect_error);
 		} 
 
-		$sql = "USE bookstore";
-		$conn->query($sql);
+	
+
 
 		$sql = "SELECT * FROM book WHERE BookID = '".$_POST['ac']."'";
 		$result = $conn->query($sql);
@@ -29,43 +26,51 @@ session_start();
 		}
 
 		$sql = "INSERT INTO cart(BookID, Quantity, Price, TotalPrice) VALUES('".$bookID."', ".$quantity.", ".$price.", Price * Quantity)";
-		$conn->query($sql);
+        $result = $conn->query($sql);
 	}
 
 	if(isset($_POST['delc'])){
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
+		$servername = getenv("APP_DATABASE_HOST");
+		$username = getenv("APP_DATABASE_USER");
+		$password = getenv("APP_DATABASE_PASSWORD");
+	$database = getenv("APP_DATABASE_NAME");
 
-		$conn = new mysqli($servername, $username, $password);
+		$conn = new mysqli($servername, $username, $password, $database);
 
 		if ($conn->connect_error) {
 		    die("Connection failed: " . $conn->connect_error);
 		} 
 
-		$sql = "USE bookstore";
-		$conn->query($sql);
+	
+
 
 		$sql = "DELETE FROM cart";
-		$conn->query($sql);
+        $result = $conn->query($sql);
 	}
 
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
+	$servername = getenv("APP_DATABASE_HOST");
+	$username = getenv("APP_DATABASE_USER");
+	$password = getenv("APP_DATABASE_PASSWORD");
+	$database = getenv("APP_DATABASE_NAME");
 
-	$conn = new mysqli($servername, $username, $password);
+	$conn = new mysqli($servername, $username, $password, $database);
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
 	} 
 
-	$sql = "USE bookstore";
-	$conn->query($sql);	
+
+
 
 	$sql = "SELECT * FROM book";
 	$result = $conn->query($sql);
-?>	
+?>
+
+<html>
+<meta http-equiv="Content-Type"'.' content="text/html; charset=utf8"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<body>
 
 <?php
 if(isset($_SESSION['id'])){
@@ -82,7 +87,7 @@ if(!isset($_SESSION['id'])){
 	echo '<header>';
 	echo '<blockquote>';
 	echo '<a href="index.php"><img src="image/logo.png"></a>';
-	echo '<form class="hf" action="Register.php"><input class="hi" type="submit" name="submitButton" value="Register"></form>';
+	echo '<form class="hf" action="register.php"><input class="hi" type="submit" name="submitButton" value="Register"></form>';
 	echo '<form class="hf" action="login.php"><input class="hi" type="submit" name="submitButton" value="Login"></form>';
 	echo '</blockquote>';
 	echo '</header>';

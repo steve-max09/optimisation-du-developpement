@@ -1,7 +1,4 @@
-CREATE DATABASE BookStore;
-USE BookStore;
-
-CREATE TABLE Book(
+CREATE TABLE book(
     BookID varchar(50),
 	BookTitle varchar(200),
     ISBN varchar(20),
@@ -12,14 +9,14 @@ CREATE TABLE Book(
     PRIMARY KEY (BookID)
 );
 
-CREATE TABLE Users(
+CREATE TABLE users(
     UserID int not null AUTO_INCREMENT,
     UserName varchar(128),
     Password varchar(16),
     PRIMARY KEY (UserID)
 );
 
-CREATE TABLE Customer (
+CREATE TABLE customer (
 	CustomerID int not null AUTO_INCREMENT,
     CustomerName varchar(128),
     CustomerPhone varchar(12),
@@ -29,10 +26,10 @@ CREATE TABLE Customer (
     CustomerGender varchar(10),
     UserID int,
     PRIMARY KEY (CustomerID),
-    CONSTRAINT FOREIGN KEY (UserID) REFERENCES Users(UserID) ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT FOREIGN KEY (UserID) REFERENCES users(UserID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
-CREATE TABLE `Order`(
+CREATE TABLE `order`(
 	OrderID int not null AUTO_INCREMENT,
     CustomerID int,
     BookID varchar(50),
@@ -41,11 +38,11 @@ CREATE TABLE `Order`(
     TotalPrice double(12,2),
     Status varchar(1),
     PRIMARY KEY (OrderID),
-    CONSTRAINT FOREIGN KEY (BookID) REFERENCES Book(BookID) ON DELETE SET NULL ON UPDATE CASCADE,
-    CONSTRAINT FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID) ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT FOREIGN KEY (BookID) REFERENCES book(BookID) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT FOREIGN KEY (CustomerID) REFERENCES customer(CustomerID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
-CREATE TABLE Cart(
+CREATE TABLE cart(
 	CartID int not null AUTO_INCREMENT,
     CustomerID int,
     BookID varchar(50),
@@ -53,8 +50,8 @@ CREATE TABLE Cart(
     Quantity int,
     TotalPrice double(12,2),
     PRIMARY KEY (CartID),
-    CONSTRAINT FOREIGN KEY (BookID) REFERENCES Book(BookID) ON DELETE SET NULL ON UPDATE CASCADE,
-    CONSTRAINT FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID) ON DELETE SET NULL ON UPDATE CASCADE
+    CONSTRAINT FOREIGN KEY (BookID) REFERENCES book(BookID) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT FOREIGN KEY (CustomerID) REFERENCES customer(CustomerID) ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 

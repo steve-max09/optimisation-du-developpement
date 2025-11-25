@@ -1,0 +1,17 @@
+---
+default:
+  image: docker:24.0.5
+
+stages:
+  - quality
+  - build
+
+phpstan:
+  stage: quality
+  script:
+    - echo "phpstan"
+
+build:
+  stage: build
+  script:
+    - echo "build"

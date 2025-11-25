@@ -65,18 +65,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 												}else{
 													$address = $_POST['address'];
 
-													$servername = "localhost";
-													$username = "root";
-													$password = "";
+													$servername = getenv("APP_DATABASE_HOST");
+													$username = getenv("APP_DATABASE_USER");
+													$password = getenv("APP_DATABASE_PASSWORD");
+	                                                $database = getenv("APP_DATABASE_NAME");
 
-													$conn = new mysqli($servername, $username, $password); 
+													$conn = new mysqli($servername, $username, $password, $database); 
 
 													if ($conn->connect_error) {
 													    die("Connection failed: " . $conn->connect_error);
 													} 
 
-													$sql = "USE bookstore";
-													$conn->query($sql);
+
 
 													$sql = "INSERT INTO users(UserName, Password) VALUES('".$uname."', '".$upassword."')";
 													$conn->query($sql);
