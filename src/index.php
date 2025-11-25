@@ -31,19 +31,20 @@ session_start();
 	}
 
 	if(isset($_POST['delc'])){
+<<<<<<< Updated upstream
 		$servername = getenv("APP_DATABASE_HOST");
 		$username = getenv("APP_DATABASE_USER");
 		$password = getenv("APP_DATABASE_PASSWORD");
 	$database = getenv("APP_DATABASE_NAME");
 
 		conn = require_once 'connection.php';
+=======
+		$conn = require_once 'connection.php';
+>>>>>>> Stashed changes
 
 		if ($conn->connect_error) {
 		    die("Connection failed: " . $conn->connect_error);
 		} 
-
-	
-
 
 		$sql = "DELETE FROM cart";
         $result = $conn->query($sql);
@@ -58,7 +59,11 @@ session_start();
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
+<<<<<<< Updated upstream
 	} 
+=======
+	}
+>>>>>>> Stashed changes
 
 
 	$sql = "SELECT * FROM book";
