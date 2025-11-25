@@ -16,7 +16,7 @@ $servername = getenv("APP_DATABASE_HOST");
 $username = getenv("APP_DATABASE_USER");
 $password = getenv("APP_DATABASE_PASSWORD");
 
-$conn = require_once 'connection.php';
+$conn = new mysqli($servername, $username, $password); 
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 													$password = getenv("APP_DATABASE_PASSWORD");
 	$database = getenv("APP_DATABASE_NAME");
 
-													$conn = require_once 'connection.php';
+													$conn = new mysqli($servername, $username, $password, $database); 
 
 													if ($conn->connect_error) {
 													    die("Connection failed: " . $conn->connect_error);
