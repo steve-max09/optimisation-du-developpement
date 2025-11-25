@@ -16,7 +16,7 @@ $conn = require_once 'connection.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 
 $sql = "USE bookstore";
 $conn->query($sql);
