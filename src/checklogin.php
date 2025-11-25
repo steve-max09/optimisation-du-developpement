@@ -1,10 +1,10 @@
 <?php
 session_start();
+$conn = require_once 'connection.php';
+
 if(isset($_POST['username'])&&isset($_POST['pwd'])){
     $username=$_POST['username'];
     $pwd = $_POST['pwd'];
-
-    include "connectDB.php";
      
      $sql="SELECT * FROM Users WHERE UserName=:username AND Password = :pwd;";
      $stmt = $pdo->prepare($sql);
@@ -16,7 +16,7 @@ if(isset($_POST['username'])&&isset($_POST['pwd'])){
     if($stmt->rowCount()>0){
         while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
             $_SESSION['id']=$row['UserID'];
-             }
+        }
         
         header("Location:index.php");
         
