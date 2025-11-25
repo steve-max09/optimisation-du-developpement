@@ -1,11 +1,6 @@
 <?php
 session_start();
-
-$conn = require_once 'connection.php';
-
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-} 
+    $conn = require_once 'connection.php';
 
 	if(isset($_POST['ac'])){
 		$sql = "SELECT * FROM book WHERE BookID = '".$_POST['ac']."'";

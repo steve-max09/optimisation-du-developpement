@@ -14,13 +14,6 @@ $oAddress;
 
 $conn = require_once 'connection.php';
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "USE bookstore";
-$conn->query($sql);
-
 $sql = "SELECT users.UserName, users.Password, customer.CustomerName, customer.CustomerIC, customer.CustomerEmail, customer.CustomerPhone, customer.CustomerGender, customer.CustomerAddress
 	FROM users, customer
 	WHERE users.UserID = customer.UserID AND users.UserID = ".$_SESSION['id']."";
